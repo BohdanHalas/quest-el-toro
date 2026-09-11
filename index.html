@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet/dist/leaflet.css"
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet/dist/leaflet.js"
+      crossorigin=""
+    ></script>
+    <script defer src="script.js"></script>
+
+    <title>Фінальна локація</title>
+  </head>
+  <body>
+    <!-- Екран введення пароля (перекриває карту до успішного вводу) -->
+    <div class="password-overlay" id="passwordScreen">
+      <div class="password-container">
+        <h2>Майже на місці!</h2>
+        <p>
+          На відміну від <b>*ПАРОЛЬ*</b>, цю річку не треба перепливати вплав,
+          щоб мене знайти.
+        </p>
+
+        <input
+          type="text"
+          id="passwordInput"
+          placeholder="Введи пароль..."
+          autocomplete="off"
+        />
+        <button id="submitBtn">Відкрити карту</button>
+
+        <p class="error-message hidden" id="errorMsg">
+          Пароль невірний! Згадай минуле.
+        </p>
+      </div>
+    </div>
+    <!-- Екран для повноекранного фото -->
+    <div class="photo-modal hidden" id="photoModal">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div class="modal-content">
+        <h2 id="modalCityName">Назва міста</h2>
+        <img id="modalImage" src="" alt="City Photo" />
+        <div class="modal-letter" id="modalLetter">X</div>
+      </div>
+    </div>
+    <!-- Контейнер карти -->
+
+    <div id="map"></div>
+
+    <!-- Плаваюча кнопка (з'явиться тільки після вводу першого пароля) -->
+    <button id="finalGuessBtn" class="floating-btn hidden">
+      Я знаю фінальне слово!
+    </button>
+
+    <!-- Екран перевірки фінального слова -->
+    <div class="password-overlay hidden" id="finalScreen">
+      <div class="password-container relative-container">
+        <span class="close-modal-dark" id="closeFinalModal">&times;</span>
+        <h2>Фінальна розгадка</h2>
+        <p>Зібрала всі літери в правильному порядку? Вводь слово:</p>
+
+        <input
+          type="text"
+          id="finalInput"
+          placeholder="Наприклад: Coño Pequeño"
+          autocomplete="off"
+        />
+        <button id="submitFinalBtn">Перевірити</button>
+
+        <p class="error-message hidden" id="finalErrorMsg">
+          Слово невірне! Перевір літери та хронологію.
+        </p>
+
+        <!-- Повідомлення про перемогу -->
+        <div id="successMessage" class="hidden success-text">
+          Правильно! 🎉<br />Я вже чекаю тебе біля нашого бичка. Поспішай до
+          мене! ❤️
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,241 @@
+/* 1. Повний скид відступів */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Тіло сайту займає рівно 100% екрана без скролу */
+body,
+html {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Manrope', sans-serif;
+  overflow: hidden;
+}
+
+/* 3. Карта розтягується на весь фон */
+#map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* 4. Оверлей з паролем жорстко перекриває все інше */
+.password-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(45, 52, 54, 0.98);
+  z-index: 9999; /* Поверх карти */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+/* --- СТИЛІ ЕКРАНУ ПАРОЛЯ --- */
+.password-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 39, 46, 0.95); /* Глибокий темний фон */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.password-container {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 10000; /* Примусово виводимо над картою */
+  pointer-events: auto; /* Розблоковуємо кліки */
+}
+
+.password-container h2 {
+  margin: 0 0 15px 0;
+  color: #2f3640;
+  font-size: 24px;
+}
+
+.password-container p {
+  color: #718093;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.password-container input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #dcdde1;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.password-container input:focus {
+  border-color: #00a8ff;
+}
+
+.password-container button {
+  background: #00a8ff;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition:
+    background 0.3s,
+    transform 0.1s;
+}
+
+.password-container button:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: #e84118;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  height: 20px;
+}
+
+/* Приховування екрану після розгадки */
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* --- СТИЛІ ПОВНОЕКРАННОГО ФОТО --- */
+.photo-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-modal:hover {
+  color: #00a8ff;
+}
+
+.modal-content {
+  text-align: center;
+  color: white;
+  max-width: 90%;
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 55vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  object-fit: contain;
+}
+
+.modal-letter {
+  font-size: 80px;
+  font-weight: 900;
+  color: #e84118;
+  margin-top: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- СТИЛІ ФІНАЛЬНОЇ КНОПКИ ТА ЕКРАНУ --- */
+.floating-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000; /* Над картою, але під модалками */
+  background: #e84118;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(232, 65, 24, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.floating-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.relative-container {
+  position: relative;
+}
+
+.close-modal-dark {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #718093;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.success-text {
+  color: #4cd137;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 15px;
+  line-height: 1.4;
+}
