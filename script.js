@@ -47,7 +47,7 @@ const cities = [
     letter: 'T',
     image: 'valencia.jpg',
   },
-  { name: 'Кадіс', coords: [36.5298, -6.292], letter: 'O', image: 'cadiz.jpg' },
+  { name: 'Кадіс', coords: [36.5298, -6.292], letter: 'O', image: 'cadiz.JPG' },
   {
     name: 'Мадрид',
     coords: [40.4168, -3.7038],
