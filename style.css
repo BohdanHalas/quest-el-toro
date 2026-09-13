@@ -263,11 +263,11 @@ html {
 
 /* --- КНОПКА ТА ВІКНО ПІДКАЗКИ --- */
 .hint-btn {
-  position: absolute;
+  position: fixed; /* Приклеює кнопку намертво до екрана */
   top: 20px;
   right: 20px;
-  z-index: 1000; /* Поверх карти Leaflet */
-  background: #f1c40f; /* Жовтий колір для привернення уваги */
+  z-index: 9999; /* Гарантує, що вона буде поверх усіх інших елементів */
+  background: #f1c40f;
   color: #333;
   padding: 10px 18px;
   border: none;
