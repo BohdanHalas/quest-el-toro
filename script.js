@@ -13,7 +13,7 @@ const modalCityName = document.getElementById('modalCityName');
 const modalImage = document.getElementById('modalImage');
 const modalLetter = document.getElementById('modalLetter');
 
-// 3. НОВЕ: Елементи фінального слова
+// 3. Елементи фінального слова
 const finalGuessBtn = document.getElementById('finalGuessBtn');
 const finalScreen = document.getElementById('finalScreen');
 const finalInput = document.getElementById('finalInput');
@@ -22,6 +22,11 @@ const finalErrorMsg = document.getElementById('finalErrorMsg');
 const successMessage = document.getElementById('successMessage');
 const closeFinalModal = document.getElementById('closeFinalModal');
 const finalTextElements = document.getElementById('finalTextElements');
+
+// 4. Елементи підказки
+const hintBtn = document.getElementById('hintBtn');
+const hintScreen = document.getElementById('hintScreen');
+const closeHintModal = document.getElementById('closeHintModal');
 
 const cities = [
   {
@@ -87,7 +92,7 @@ class App {
       if (e.target === photoModal) photoModal.classList.add('hidden');
     });
 
-    // НОВЕ: Фінальна перевірка слова
+    // Фінальна перевірка слова
     finalGuessBtn.addEventListener('click', () => {
       finalScreen.classList.remove('hidden');
     });
@@ -98,6 +103,19 @@ class App {
     finalInput.addEventListener('keydown', e => {
       if (e.key === 'Enter') this._checkFinalWord();
     });
+
+    // Логіка підказки
+    hintBtn.addEventListener('click', () => {
+      hintScreen.classList.remove('hidden');
+    });
+    closeHintModal.addEventListener('click', () => {
+      hintScreen.classList.add('hidden');
+    });
+    hintScreen.addEventListener('click', e => {
+      if (e.target === hintScreen) {
+        hintScreen.classList.add('hidden');
+      }
+    });
   }
 
   _checkPassword() {
@@ -106,6 +124,10 @@ class App {
     if (guess === 'десна' || guess === 'desna' || guess === 'десни') {
       passwordScreen.classList.add('hidden');
       finalGuessBtn.classList.remove('hidden'); // Показуємо кнопку фіналу на карті
+      
+      // НОВЕ: Показуємо кнопку підказки після правильного пароля
+      hintBtn.classList.remove('hidden');
+      
       this._loadMap();
     } else {
       errorMsg.classList.remove('hidden');
@@ -123,7 +145,7 @@ class App {
       finalErrorMsg.classList.add('hidden');
       finalInput.classList.add('hidden');
       submitFinalBtn.classList.add('hidden');
-      finalTextElements.classList.add('hidden'); // Ось це сховає заголовок і текст
+      finalTextElements.classList.add('hidden'); 
 
       // Показуємо переможний блок з фото
       successMessage.classList.remove('hidden');
@@ -160,24 +182,3 @@ class App {
 }
 
 const app = new App();
-// --- ЛОГІКА ПІДКАЗКИ ---
-const hintBtn = document.getElementById('hintBtn');
-const hintScreen = document.getElementById('hintScreen');
-const closeHintModal = document.getElementById('closeHintModal');
-
-// Відкрити підказку
-hintBtn.addEventListener('click', () => {
-  hintScreen.classList.remove('hidden');
-});
-
-// Закрити підказку на хрестик
-closeHintModal.addEventListener('click', () => {
-  hintScreen.classList.add('hidden');
-});
-
-// Закрити підказку при кліку на темний фон
-hintScreen.addEventListener('click', (e) => {
-  if (e.target === hintScreen) {
-    hintScreen.classList.add('hidden');
-  }
-});
