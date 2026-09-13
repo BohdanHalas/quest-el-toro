@@ -6,22 +6,22 @@
 }
 
 /* 2. Тіло сайту займає рівно 100% екрана без скролу */
-body,
-html {
-  height: 100vh;
+html, body {
+  margin: 0;
+  padding: 0;
+  /* Головна магія для мобільних пристроїв: */
+  height: 100dvh; 
   width: 100vw;
-  font-family: 'Manrope', sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* Забороняє сторінці "стрибати" при скролі */
+  background-color: #1a1a1a; /* Робимо фон темним, щоб навіть при мікроглюках не било по очах білим */
 }
 
-/* 3. Карта розтягується на весь фон */
 #map {
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
 }
 
 /* 4. Оверлей з паролем жорстко перекриває все інше */
