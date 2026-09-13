@@ -74,13 +74,17 @@
     <div class="password-overlay hidden" id="finalScreen">
       <div class="password-container relative-container">
         <span class="close-modal-dark" id="closeFinalModal">&times;</span>
-        <h2>Фінальна розгадка</h2>
-        <p>Зібрала всі літери в правильному порядку? Вводь слово:</p>
+
+        <!-- Обгортка для тексту, щоб її сховати після розгадки -->
+        <div id="finalTextElements">
+          <h2>Фінальна розгадка</h2>
+          <p>Зібрала всі літери в правильному порядку? Вводь слово:</p>
+        </div>
 
         <input
           type="text"
           id="finalInput"
-          placeholder="Наприклад: Coño Pequeño"
+          placeholder="Наприклад: El Toro"
           autocomplete="off"
         />
         <button id="submitFinalBtn">Перевірити</button>
@@ -89,10 +93,14 @@
           Слово невірне! Перевір літери та хронологію.
         </p>
 
-        <!-- Повідомлення про перемогу -->
-        <div id="successMessage" class="hidden success-text">
-          Правильно! 🎉<br />Я вже чекаю тебе біля нашого бичка. Поспішай до
-          мене! ❤️
+        <!-- Повідомлення про перемогу + ФОТО -->
+        <div id="successMessage" class="hidden success-content">
+          <!-- Назву файлу eltoro.jpg зміни на свою, якщо вона інша -->
+          <img src="eltoro.jpg" alt="El Toro" class="final-photo" />
+          <div class="success-text">
+            Правильно! 🎉<br />Я вже чекаю тебе на нашому місці біля El Toro.
+            Поспішай до мене! ❤️
+          </div>
         </div>
       </div>
     </div>
