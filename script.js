@@ -21,6 +21,7 @@ const submitFinalBtn = document.getElementById('submitFinalBtn');
 const finalErrorMsg = document.getElementById('finalErrorMsg');
 const successMessage = document.getElementById('successMessage');
 const closeFinalModal = document.getElementById('closeFinalModal');
+const finalTextElements = document.getElementById('finalTextElements');
 
 const cities = [
   {
@@ -118,10 +119,13 @@ class App {
     const guess = finalInput.value.toLowerCase().replace(/\s+/g, '');
 
     if (guess === 'eltoro') {
-      // Ховаємо інпути і показуємо переможний текст
+      // Ховаємо інпути, помилку ТА зайвий текст
       finalErrorMsg.classList.add('hidden');
       finalInput.classList.add('hidden');
       submitFinalBtn.classList.add('hidden');
+      finalTextElements.classList.add('hidden'); // Ось це сховає заголовок і текст
+
+      // Показуємо переможний блок з фото
       successMessage.classList.remove('hidden');
     } else {
       // Помилка
