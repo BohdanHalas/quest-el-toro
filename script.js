@@ -70,7 +70,7 @@ const cities = [
 
 class App {
   #map;
-  #mapZoomLevel = 4;
+  #mapZoomLevel = 3;
   #centerCoords = [48.0, 5.0];
 
   constructor() {
