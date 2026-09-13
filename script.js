@@ -160,3 +160,24 @@ class App {
 }
 
 const app = new App();
+// --- ЛОГІКА ПІДКАЗКИ ---
+const hintBtn = document.getElementById('hintBtn');
+const hintScreen = document.getElementById('hintScreen');
+const closeHintModal = document.getElementById('closeHintModal');
+
+// Відкрити підказку
+hintBtn.addEventListener('click', () => {
+  hintScreen.classList.remove('hidden');
+});
+
+// Закрити підказку на хрестик
+closeHintModal.addEventListener('click', () => {
+  hintScreen.classList.add('hidden');
+});
+
+// Закрити підказку при кліку на темний фон
+hintScreen.addEventListener('click', (e) => {
+  if (e.target === hintScreen) {
+    hintScreen.classList.add('hidden');
+  }
+});
