@@ -127,9 +127,7 @@ html {
 
 /* Приховування екрану після розгадки */
 .hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+  display: none !important;
 }
 
 /* --- СТИЛІ ПОВНОЕКРАННОГО ФОТО --- */
@@ -197,17 +195,18 @@ html {
 /* --- СТИЛІ ФІНАЛЬНОЇ КНОПКИ ТА ЕКРАНУ --- */
 .floating-btn {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px; /* Трохи підняли над копірайтом Leaflet */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9000; /* Над картою, але під модалками */
+  z-index: 9000;
   background: #e84118;
   color: white;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border: none;
   border-radius: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
+  white-space: nowrap; /* Забороняє тексту переноситись на нові рядки */
   box-shadow: 0 10px 25px rgba(232, 65, 24, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
