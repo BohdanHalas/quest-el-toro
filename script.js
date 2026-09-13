@@ -39,7 +39,7 @@ const cities = [
   {
     name: 'Кордова',
     coords: [37.8882, -4.7794],
-    letter: '" "',
+    letter: '*Пробіл*',
     image: 'cordoba.png',
   },
   {
