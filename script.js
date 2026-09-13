@@ -121,6 +121,10 @@ class App {
   _checkPassword() {
     const guess = passwordInput.value.trim().toLowerCase();
 
+    // Примусово ховаємо клавіатуру і перемальовуємо екран (хак для iOS)
+    passwordInput.blur();
+    window.scrollTo(0, 0);
+
     if (guess === 'десна' || guess === 'desna' || guess === 'десни') {
       passwordScreen.classList.add('hidden');
       finalGuessBtn.classList.remove('hidden'); // Показуємо кнопку фіналу на карті
